@@ -12,10 +12,17 @@ namespace MemoryGame
 {
     public partial class Form1 : Form
     {
+        Random rand = new Random();
+        List<string> icons = new List<string>()
+        {
+            "e","e","d","d","k","k","b","b","N","N","!","!","&","&","$","$"
+        };
         public Form1()
         {
             InitializeComponent();
             InitializeGrid();
+            RandomIcons();
+
         }
         private void InitializeGrid()
         {
@@ -44,6 +51,18 @@ namespace MemoryGame
             //Grid.Controls.Add(new Label { Text = "Type:", Anchor = AnchorStyles.Left, AutoSize = true }, 0, 0);
 
 
+        }
+        private void RandomIcons()
+        {
+            Label label;
+            for(int i = 0; i < 16; i++)
+            {
+                
+                int randomIndex = rand.Next(0, 16);
+
+                label = (Label)Grid.Controls[i];
+                label.Text = icons[randomIndex];
+            }
         }
     }
 }
