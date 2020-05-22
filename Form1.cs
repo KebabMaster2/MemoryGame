@@ -15,7 +15,7 @@ namespace MemoryGame
         Random rand = new Random();
         List<string> icons = new List<string>()
         {
-            "e","e","d","d","k","k","b","b","N","N","!","!","&","&","$","$"
+            "e","e","d","d","k","k","b","b","N","N","!","!","v","v","$","$"
         };
         public Form1()
         {
@@ -54,14 +54,14 @@ namespace MemoryGame
         }
         private void RandomIcons()
         {
+
             Label label;
             for(int i = 0; i < 16; i++)
             {
-                
-                int randomIndex = rand.Next(0, 16);
-
+                int randomIndex = rand.Next(0, icons.Count);
                 label = (Label)Grid.Controls[i];
                 label.Text = icons[randomIndex];
+                icons.RemoveAt(randomIndex);
             }
         }
     }
